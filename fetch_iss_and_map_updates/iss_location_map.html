@@ -11,16 +11,18 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     
     <!-- And our script. Wait for page load before executing.  -->
-    <script async defer src="iss_map.js"></script>
+    <script async defer src="fetch.js"></script>
 
 <head>
 
     <h1>Where is the International Space Station?</h1>
 
-    <P>This page will update every 5 seconds.</P>
+    <P>This page will update every 10 seconds.</P>
     <div>
+        <p>At <span id="time"></span> the ISS is over the following coordinates:</p>
         <p>ISS Latitude: <span id="iss-lat"></span></p>
         <p>ISS Longitude: <span id="iss-long"></span></p>
+        
     </div> 
 
     <div id="iss-map">

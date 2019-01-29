@@ -1,4 +1,6 @@
-/* Lab 4, Part 1 - write the code requested by lines marked //TODO  */
+/* Lab 5, Part 1 - write the code requested by lines marked //TODO  */
+
+
 
 
 /* a. Use this JavaScript object of exchange rates relative to Euros.
@@ -17,8 +19,6 @@ var rates = {
 // TODO if you had 100 Euros, calculate the equivalent value in Australian Dollars (AUD)
 // TODO write code to identify the currency symbol that has the highest exchange rate compared to Euros.
 //    In other words, identify the property with the largest value. the answer is BRL (Brazilian Real) at 3.8959 BRL to 1 Euro.
-
-
 
 
 /* b. Use this JavaScript object. This represents the current position of the International Space Station
@@ -53,14 +53,20 @@ var cats_and_owners = [
 
 // TODO print Gary Oldman's cat's name
 // TODO Taylor Swift's cat is called  'Meredith'. Add this data to the array.
-// TODO write a loop to print each cat owner, and their cat's name, one per line
-
+// TODO write a loop to print each cat owner, and their cat's name, one per line. Use the forEach style.
 
 
 
 /* d. Use the following JSON object, describing the Nobel Prize winners in 2017.
 Source http://api.nobelprize.org/v1/prize.json?year=2017
 * */
+
+// TODO print the full name of the Literature Nobel laureate.
+// TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
+// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
+// TODO write code to print the total number of prize categories
+// TODO write code to count the total number of laureates from 2017. (have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.)
+
 
 var nobel_prize_winners_2017 = {
   "prizes":[
@@ -187,8 +193,3 @@ var nobel_prize_winners_2017 = {
   ]
 };
 
-// TODO print the full name of the Literature Nobel laureate.
-// TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
-// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
-// TODO write code to print the total number of prize categories
-// TODO write code to count the total number of laureates from 2017. (have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.)

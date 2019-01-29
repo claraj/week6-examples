@@ -24,3 +24,8 @@ fetch(url)
 
         let issMarker = L.marker([lat, long]).addTo(map)
     })
+    .catch( err => {
+        console.log(err)
+    })
+
+    

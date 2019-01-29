@@ -5,8 +5,8 @@ let issLat = document.querySelector('#iss-lat')
 let issLong = document.querySelector('#iss-long')
 
 fetch(url)
-    .then(res => res.json())
-    .then(resJson => { 
+    .then( res => res.json() )
+    .then( resJson => { 
         console.log(resJson) 
         let issPosition = resJson.iss_position
         let lat = issPosition.latitude
@@ -14,3 +14,7 @@ fetch(url)
         issLat.innerHTML = lat 
         issLong.innerHTML = long
     })
+    .catch( err => {
+        console.log(err)
+    })
+

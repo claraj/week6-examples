@@ -1,5 +1,5 @@
 //An object with properties table, chair, couch; values are the color of each.
-var furniture = { table : "red" , chair : "blue", couch : "green"};
+var furniture = {table: "red" , chair: "blue", couch: "green"};
 
 //Looping over all of the properties
 for (var f in furniture) {
@@ -8,38 +8,36 @@ for (var f in furniture) {
 }
 
 //What about nested objects? How would you access those?
-var room = { floor: 1,
-  dimensions : { length : 10, width : 12, height : 8},
-  contains : furniture      //Our furniture object
+var room = {floor: 1,
+  dimensions: {length : 10, width: 12, height: 8},
+  contains: furniture      //Our furniture object
 };
 
 for (var item in room ) {
-  console.log("Property: " + item + " value: "+ room[item]);
+  console.log('Property ' + item + ' has value: ' + JSON.stringify(room[item]))
 }
 
 //This is a different use of "in", which checks if a
 // property exists in an object.
 if ("table" in furniture) {
-  console.log("Property \"table\" is in furniture object");
+  console.log("Property \"table\" is in furniture object")
 }
 else {
-  console.log("table is not in furniture object");
+  console.log("table is not in furniture object")
 }
-
-
 
 //can create arrays of objects, objects of arrays, etc...
 var phones = [
-  { os : "Android", manufacturer : "samsung" },
-  { os: "iOS", manufacturer : "apple"}
+  { os: "Android", manufacturer: "samsung" },
+  { os: "iOS", manufacturer: "apple"}
 ];
 
-var phoneData = phones[0];   // { os : "Android", manufacturer : "samsung" },
+var phoneData = phones[0]   // { os : "Android", manufacturer : "samsung" },
 for (var prop in phoneData){
-  console.log(prop + ":" + phoneData[prop]);
+  console.log(prop + ":" + phoneData[prop])
 }
 
-// More complex JSON. Adapted  from the World Bank API http://api.worldbank.org/v2/countries/?format=json
+// More complex JSON. Adapted from the World Bank API http://api.worldbank.org/v2/countries/?format=json
 var countries_a = [
     {
       "id":"ABW",
@@ -337,9 +335,9 @@ var countries_a = [
 
 console.log("Countries whose ISO 3-letter Country Codes start with A, and their capital cities");
 
-for (var c = 0 ; c < countries_a.length ; c++) {
-  var country = countries_a[c];
-  console.log('The country of ' + country.name + ' has the 3-letter code ' + country.id + ' and the capital city is ' + country.capitalCity);
+for (var c = 0; c < countries_a.length; c++) {
+  var country = countries_a[c]
+  console.log('The country of ' + country.name + ' has the 3-letter code ' + country.id + ' and the capital city is ' + country.capitalCity)
 }
 
 
@@ -378,17 +376,17 @@ var random_taco = {
   }
 };
 
-// Get the URs for each part of the recipe
+// Get the URLs for each part of the recipe
 
-console.log();
-console.log('List of URLs for recipes for the ingredients in a random taco');
-urls = [];
+console.log()
+console.log('List of URLs for recipes for the ingredients in a random taco')
+let urls = []
 
 for (var component in random_taco) {
-  url = random_taco[component].url;
-  //url = random_taco[component]['url'];  // This would work too
-  urls.push(url);
+  url = random_taco[component].url
+  //url = random_taco[component]['url']  // This would work too
+  urls.push(url)
 }
 
-console.log(urls);
+console.log(urls)
 
