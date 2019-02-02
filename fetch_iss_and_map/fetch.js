@@ -1,5 +1,5 @@
 
-let url = 'http://api.open-notify.org/iss-now.json'
+let url = 'https://api.wheretheiss.at/v1/satellites/25544'
 
 let issLat = document.querySelector('#iss-lat')
 let issLong = document.querySelector('#iss-long')
@@ -14,11 +14,10 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 fetch(url)
     .then(res => res.json())
-    .then(resJson => {
-        console.log(resJson)
-        let issPosition = resJson.iss_position
-        let lat = issPosition.latitude
-        let long = issPosition.longitude
+    .then(issData => {
+        console.log(issData)
+        let lat = issData.latitude
+        let long = issData.longitude
         issLat.innerHTML = lat
         issLong.innerHTML = long
 

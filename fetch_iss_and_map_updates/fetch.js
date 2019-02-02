@@ -1,4 +1,4 @@
-var url = 'http://api.open-notify.org/iss-now.json'
+var url = 'https://api.wheretheiss.at/v1/satellites/25544'
 
 var issLat = document.querySelector('#iss-lat')
 var issLong = document.querySelector('#iss-long')
@@ -18,19 +18,25 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 iss()   // initial call to function
 setInterval(iss, update)  // Call the iss function every update seconds
 
+
+var icon = L.icon({
+    iconUrl: 'iss.png',
+    iconSize: [50, 50],
+    iconAnchor: [25, 25]
+})
+
 function iss() {
     fetch(url)
         .then( res => res.json())
-        .then( resJson => {
-            console.log(resJson)
-            let issPosition = resJson.iss_position
-            let lat = issPosition.latitude
-            let long = issPosition.longitude
+        .then( issData => {
+            console.log(issData)
+            let lat = issData.latitude
+            let long = issData.longitude
             issLat.innerHTML = lat
             issLong.innerHTML = long
 
             if (!issMarker) {
-                issMarker = L.marker([lat, long]).addTo(map) // Create the marker 
+                issMarker = L.marker([lat, long], {icon: icon}).addTo(map) // Create the marker 
             } else {
                 issMarker.setLatLng([lat, long]) // Already exists - move to new location
             }
