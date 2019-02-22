@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sunrise and sunset </title>
+
+   </head>
+<body>
+
+<H1>Sunrise and sunset times</H1>
+
+<p>Sunrise for your location is <span id="sunrise"></span></p>
+<p>Sunset for your location is <span id="sunset"></span></p>
+<script>
+
+    if (navigator.geolocation) {   // requests permission to use location
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log(position)  // for debugging
+            getSunTimes(position)
+        })
+    } else {
+        console.log('no location available')
+        alert('If you permit this site to access location, it can fetch the sunrise/sunset times.')
+        // todo consider asking the user to enter a location? 
+    }
+
+    function getSunTimes(position) {
+
+        let lat = position.coords.latitude
+        let lng = position.coords.longitude
+
+        // note the backticks in the format string 
+        let url = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`
+        
+        fetch(url).then((res) => {
+            return res.json()   // convert response into a JSON object
+        }).then((json) => {
+            console.log(json)  // for debugging 
+            
+            let sunriseEl = document.querySelector('#sunrise')
+            let sunsetEl = document.querySelector('#sunset')
+            
+            let sunriseTime = json.results.sunrise
+            let sunsetTime = json.results.sunset
+
+            // Convert from UTC - the time in London - to the browser's local time 
+            let tz = Intl.DateTimeFormat().resolvedOptions().timeZone  // browser's timezone
+
+            // Make a new date from the string 
+            let sunriseDate = new Date(sunriseTime)
+            
+            // And format it as a local time (omitting the day month year) in the browser's timezone
+            let localizedSunriseDate = sunriseDate.toLocaleTimeString( {timezone: tz})  // format to the browser's timezone
+
+            // Repeat for sunset. 
+            let sunsetDate = new Date(sunsetTime)
+            let localizedSunsetDate = sunsetDate.toLocaleTimeString( {timezone: tz})
+
+            // And set as HTML for the #sunrise and #sunset elements. 
+            sunriseEl.innerHTML = localizedSunriseDate
+            sunsetEl.innerHTML = localizedSunsetDate
+            
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+</script>
+
+
+</body>
+</html>
