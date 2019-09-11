@@ -1,4 +1,4 @@
-/* Lab 5, Part 1 - write the code requested by lines marked //TODO  */
+/* Lab 5, Part 2 - write the code requested by lines marked //TODO  */
 
 
 
