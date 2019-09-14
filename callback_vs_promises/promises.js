@@ -16,10 +16,10 @@ fetch(url, function(error, response) {
         })
     }
 })
-// Don't write this code :) 
+// Don't write this code, it won't work :) 
 */
 
-// Fetch - promises instead of callbacks - this only works in a browser 
+// fetch - uses promises instead of callbacks functions - this only works in a browser 
 
 fetch(url)
     .then( (response) => {
