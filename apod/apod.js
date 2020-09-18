@@ -20,7 +20,7 @@ fetch(apodApiUrl)
             apodVideo.style.display = 'block'
         }
         else {
-            // What other types could there be? 
+            // What other types could there be?
         }
 
         // Display description - which may also be in the explanation property. 
