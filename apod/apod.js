@@ -14,7 +14,7 @@ fetch(apodApiUrl)
             // todo display video 
         }
         else {
-            // Um
+            // What other types could there be? 
         }
 
         let description = data.description
