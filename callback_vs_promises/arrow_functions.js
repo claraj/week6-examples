@@ -15,18 +15,24 @@ animals.forEach( (animal) => {
 })
 
 // If there is only one parameter to the callback function, can omit the parenthesis
-animals.forEach( (animal) => {
+animals.forEach( animal => {
     console.log(animal)
 })
 
-// If there's only one statement in the callback function, can omit the { } too
+// If there's only one statement in the callback function, can omit the { } 
 animals.forEach( (animal) => 
     console.log(animal)
 )
 
-// Or can be even more concise - remember this only works 
+// If there is only one parameter to the callback function, 
+// and one statement in the callback function, can omit the () and { } 
+animals.forEach( animal => 
+    console.log(animal)
+)
+
+// Or can be even more concise and write on one line. This only works 
 // for a single line in the callback function
-animals.forEach( (animal) =>  console.log(animal) )
+animals.forEach( animal =>  console.log(animal) )
 
 
 
