@@ -21,6 +21,7 @@ function displayWeatherTable(weatherJson) {
         let day = forecast.name
         let temp = forecast.temperature
         let detail = forecast.detailedForecast
+        let weatherIconUrl = forecast.icon
 
         // create table row 
         let tableRow = document.createElement('tr')
@@ -33,15 +34,23 @@ function displayWeatherTable(weatherJson) {
         // cell for temperature, add to table row
         let tempTableCell = document.createElement('td')
         tempTableCell.innerHTML = temp
-        // tableRow.appendChild(tempTableCell)
-        
+        // tableRow.appendChild(tempTableCell)   // adding individually...
+
+        let weatherImage = document.createElement('img')
+        weatherImage.src = weatherIconUrl 
+
+        let weatherImageTableCell = document.createElement('td')
+        // Add image to table cell
+        weatherImageTableCell.appendChild(weatherImage)
+        // tableRow.appendChild(weatherImageTableCell)   // adding individually....
+
         // cell for detailed forecast, add to table row
         let detailTableCell = document.createElement('td')
         detailTableCell.innerHTML = detail
-        // tableRow.appendChild(detail)
+        // tableRow.appendChild(detail)   // adding individually...
 
-        // Append a list of children to an element 
-        tableRow.append(dayTableCell, tempTableCell, detailTableCell)  // or add all at once
+        // Or use append multiple children to an element 
+        tableRow.append(dayTableCell, tempTableCell, weatherImageTableCell, detailTableCell)  // ....or add all at once
 
         // append row to table 
         weatherTable.appendChild(tableRow)

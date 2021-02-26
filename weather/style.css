@@ -3,6 +3,6 @@ table, tr, th, td {
     border-collapse: collapse;
 }
 
-tr, td {
+tr, td, th {
     padding: 5px;
 }
