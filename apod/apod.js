@@ -1,4 +1,4 @@
-let apodApiUrl = 'https://apodapi.herokuapp.com/api/'
+let apodApiUrl = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
  
 let apodImage = document.querySelector('#apod-image')
 let apodVideo = document.querySelector('#apod-video')
