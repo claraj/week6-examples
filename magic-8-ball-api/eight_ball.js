@@ -38,7 +38,7 @@ function submitQuestion() {
     }
 
     // Encode question - replace special characters with codes 
-    // so that spaces and ? etc. can be send as part of the URL
+    // so that spaces and ? etc. can be sent as part of the URL
     let questionEncoded = encodeURIComponent(question)
 
     // Add the question to the end of the URL. 
