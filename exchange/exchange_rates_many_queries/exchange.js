@@ -1,4 +1,4 @@
-let url = 'https://api.ratesapi.io/latest?base=USD'
+let url = 'https://exchange-rates-1150.herokuapp.com/latest?base=USD'
 
 let dollarInput = document.querySelector('#dollars')
 let targetCurrencySelect = document.querySelector('#target-currency')
