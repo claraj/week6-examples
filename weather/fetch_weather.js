@@ -1,6 +1,6 @@
-const weatherUrl = 'https://api.weather.gov/gridpoints/MPX/116,72/forecast'
+let weatherUrl = 'https://api.weather.gov/gridpoints/MPX/116,72/forecast'
 
-const weatherTable = document.querySelector('#weather-forecast')
+let weatherTable = document.querySelector('#weather-forecast')
 
 fetch(weatherUrl)
     .then(response => response.json())
@@ -14,46 +14,54 @@ fetch(weatherUrl)
 
 function displayWeatherTable(weatherJson) {
     console.log(weatherJson)
-    let forecasts = weatherJson.properties.periods
-    console.log(forecasts)
+    let forecastArray = weatherJson.properties.periods
+    console.log(forecastArray)
+    forecastArray.forEach( forecastPeriodData => {
+        console.log(forecastPeriodData)    
 
-    forecasts.forEach( forecast => {
-        let day = forecast.name
-        let temp = forecast.temperature
-        let detail = forecast.detailedForecast
-        let weatherIconUrl = forecast.icon
-
-        // create table row 
+        // Create a table row for this forecast period
         let tableRow = document.createElement('tr')
-        
-        // cell for day, add to table row
-        let dayTableCell = document.createElement('td')
-        dayTableCell.innerHTML = day
-        // tableRow.appendChild(dayTableCell)   // could add individually...
-        
-        // cell for temperature, add to table row
-        let tempTableCell = document.createElement('td')
-        tempTableCell.innerHTML = temp
-        // tableRow.appendChild(tempTableCell)   // adding individually...
 
-        let weatherImage = document.createElement('img')
-        weatherImage.src = weatherIconUrl 
+        // Create a td element for the period name, 
+        // get the name from the JSON, set the innerHTML, add to the table row
+        let periodNameTableData = document.createElement('td')
+        let periodName = forecastPeriodData.name  // for example, "Friday" or "Friday Night"
+        periodNameTableData.innerHTML = periodName
+        tableRow.appendChild(periodNameTableData)
 
-        let weatherImageTableCell = document.createElement('td')
-        // Add image to table cell
-        weatherImageTableCell.appendChild(weatherImage)
-        // tableRow.appendChild(weatherImageTableCell)   // adding individually....
+        // Create td for temperature and the unit temperature is measured in
+        // The API can return American/Fahrenheit or metric/Celsius units, the default is Fahrenheit
+        let temperatureTableData = document.createElement('td')
+        let temperature = forecastPeriodData.temperature 
+        let temperatureUnit = forecastPeriodData.temperatureUnit
+        temperatureTableData.innerHTML = temperature + temperatureUnit
+        tableRow.appendChild(temperatureTableData)
 
-        // cell for detailed forecast, add to table row
-        let detailTableCell = document.createElement('td')
-        detailTableCell.innerHTML = detail
-        // tableRow.appendChild(detail)   // adding individually...
+        // Icon
+        let weatherIconTableData = document.createElement('td')
+        let weatherIconImage = document.createElement('img')
+        let weatherIconSource = forecastPeriodData.icon
+        weatherIconImage.src = weatherIconSource
+        // Add the image to the td 
+        weatherIconTableData.appendChild(weatherIconImage)
+        // Add the td (with the image inside it) to the table row 
+        tableRow.appendChild(weatherIconTableData)
 
-        // Or use append multiple children to an element 
-        tableRow.append(dayTableCell, tempTableCell, weatherImageTableCell, detailTableCell)  // ....or add all at once
+        // Detailed forecast description 
+        let detailForecastTableData = document.createElement('td')
+        let detailedForecast = forecastPeriodData.detailedForecast
+        detailForecastTableData.innerHTML = detailedForecast
+        tableRow.appendChild(detailForecastTableData)
 
-        // append row to table 
+        // Add the new row to the table
         weatherTable.appendChild(tableRow)
-        
     })
 }
+
+
+
+
+
+
+
+

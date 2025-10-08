@@ -1,7 +1,7 @@
 let apodApiUrl = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
 
-// Request for a "picture" of the day that returns a video 
-//let apodApiUrl = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2020-01-21'
+// Request for a "picture" of the day that returns a video. Use your own key 
+//let apodApiUrl = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2025-10-07'
 
 let apodTitle = document.querySelector('#apod-title')
 let apodExplanation = document.querySelector('#apod-explanation')
