@@ -19,5 +19,7 @@ body {
     display: none;  /* Hide video iframe */
 }
 
-
+a {
+    color: powderblue;
+}
 

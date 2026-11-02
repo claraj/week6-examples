@@ -1,7 +1,9 @@
-let apodApiUrl = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+// Fall 2026 - NASA retires APOD API and replaces with a new version.
+// Currently this returns a list, while the documentation says it 
+// returns an object representing today's APOD. 
+let apodApiUrl = 'https://science.nasa.gov/wp-json/wp/v2/apod-basic'  
 
-// Request for a "picture" of the day that returns a video. Use your own key 
-//let apodApiUrl = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2025-10-07'
+// Request 2025-10-07 for a "picture" of the day that returns a video. Not currently supported with new API?
 
 let apodTitle = document.querySelector('#apod-title')
 let apodExplanation = document.querySelector('#apod-explanation')
@@ -14,6 +16,8 @@ fetch(apodApiUrl)
         console.log(data)
         // Get title, explanation, video/image URL from response data 
 
+        data = data[0]
+
         let title = data.title 
         apodTitle.innerHTML = title 
 
@@ -21,7 +25,7 @@ fetch(apodApiUrl)
         apodExplanation.innerHTML = explanation
 
         let mediaType = data.media_type 
-        let url = data.url 
+        let url = data.hdurl 
 
         if (mediaType === 'image') {
             apodImage.src = url 
